@@ -1,0 +1,91 @@
+已经使用别名
+co checkout
+br branch
+ci commit
+st status
+
+看最后一次的提交信息
+git config --global alias.last 'log -1 HEAD'
+git log --all --decorate --graph --oneline    
+git提交拉取过程中图形化界面的展示
+
+git 分支合并
+git rebase –i HEAD~3
+
+which git  查看git的目录
+
+git rebase  -i develop deleteLike
+
+git pull = git fetch + git rebase   
+这样分开操作可以解决如果有冲突，git pull冲突显示很乱的问题。
+
+
+
+在her-docs
+本地分支sp提交到远程sp
+切换到master
+输入git merge sp
+直接提交到master
+
+git rm --cached 能把 git stage 里的数据删掉
+git commit 保存提交
+
+当本地commit了不必要的修改之后
+ git rm --cached idea(idea是文件名)
+ //git rm -r --cached .idea（idea是目录）
+ git status
+ git add .
+ git commit
+ git log
+ git log --stat
+ git rebase -i cfa19e2e1d130009ebd210832aac6e8957b6436b~(这是以前增加不必要的文件的哈希值)
+在上下两步中间，wq后会出现有两个提交名字的文件出现，将最近的修改的那个名字，注意是最近，删除。然后wq就好了。
+中间好像是要wq两次
+ git push -f (意思是将本地分支的哈希值将远端的覆盖，这种情况适用的事本地分支只有一个人在开发)
+
+
+删除本地分支    git branch -d 分支名
+删除本地没有 fully merged 的分支名  git branch -D hotFix/photoLike（这是分支名）
+git branch -r -d ：实际上这个操作并没有删掉远端的分支，只是删了你本地的 origin 的 分支 git push origin :sp  只能用这种方式来删掉远端分支
+
+
+建议你每次使用 git fetch 的时候，加上 --prune 这个参数
+它会把远端仓库已经删掉的分支，对应的删掉你本地 origin 的分支
+不过你本地的分支还是在的，需要你手动删除
+
+
+git checkout -- file可以丢弃工作区的修改
+这个很重要，没必要一直点command + z  
+例子：$ git checkout — readme.txt
+
+
+git rebase 发生冲突的时候，可以使用 git rebase --abort 来终止这次 rebase，相当于没有执行过 rebase 一样。
+merge 也是，可以用 git merge --abort，但是老版本 git 的 merge 没有 --abort 这个参数，
+可以使用 git reset --merge 来达到同样的效果。
+
+
+git reflog 查看所有的操作记录
+
+多提交了文件以及多个提交合并
+git rebase -i HEAD~
+ git reset HEAD~
+ git status
+ git add src/
+ git commit
+ git checkout .
+ git rebase --contiune
+ git rebase --continue
+ git push -f
+ git commit —amend
+
+git clone
+git clone https://mmdjsdksjdsdjsadsads 这个时候注意加.git在末尾才能clone下来
+也可以点击raw 然后再全选拷贝
+
+git stash list     能看到所有的压栈历史
+git stash （写对应的压栈号）如果不写压栈号则是将最新的一个压栈弹出
+
+
+reset錯誤的時候，在ORIG_HEAD上reset 就可以還原到reset前的狀態。
+git reset --hard ORIG_HEAD
+
