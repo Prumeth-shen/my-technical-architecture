@@ -1,0 +1,24 @@
+Cargo 
+
+Cargo 是 Rust 的构建系统和包管理工具
+
+Cargo 负责三个工作：
+构建你的代码
+下载你代码依赖的库并编译这些库。我们把你代码需要的库叫做“依赖（dependencies）”因为你的代码依赖他们。
+
+为了 Cargo 化一个项目，需要做三件事：
+1. 将源文件放到正确的目录
+2. 删除旧的可执行文件（Windows下是main.exe，其他平台是main）并生成一个新的。
+3. 创建一个 Cargo 配置文件
+
+Cargo 发现文件并没有被修改，所以它只是运行了二进制文件。如果你修改了源文件，Cargo 会在运行前重新构建项目，这样你将看到像这样的输出：
+
+$ cargo run
+   Compiling hello_world v0.0.1 (file:///home/yourname/projects/hello_world)
+     Running `target/debug/hello_world`
+Hello, world!
+
+Cargo 检查任何项目文件是否被修改，并且只会在你上次构建后修改了他们才重新构建。
+
+对于简单的项目，Cargo 并不比使用rustc要好多少，不过将来它会变得有用。这在你开始使用 crate 时显得尤为正确；（crate）在其他语言中有“库（library）”或“包（package）”这样的同义词。对于包含多个 crate 的项目，让 Cargo 来协调构建将会轻松很多。有了 Cargo，你可以运行cargo build，而一切将有条不紊的运行。
+
